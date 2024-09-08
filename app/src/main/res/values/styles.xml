@@ -1,0 +1,46 @@
+<resources>
+    <style name="DarkTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorPrimaryDark">@color/material_blue</item>
+    </style>
+
+    <style name="DarkTheme.Red" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_red</item>
+        <item name="colorPrimaryDark">@color/material_red</item>
+    </style>
+
+    <style name="DarkTheme.Yellow" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_yellow</item>
+        <item name="colorPrimaryDark">@color/material_yellow</item>
+    </style>
+
+    <style name="DarkTheme.Green" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_green</item>
+        <item name="colorPrimaryDark">@color/material_green</item>
+    </style>
+
+    <style name="DarkTheme.Orange" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_orange</item>
+        <item name="colorPrimaryDark">@color/material_orange</item>
+    </style>
+
+    <style name="DarkTheme.Purple" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_purple</item>
+        <item name="colorPrimaryDark">@color/material_purple</item>
+    </style>
+
+    <style name="DarkTheme.Pink" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_pink</item>
+        <item name="colorPrimaryDark">@color/material_pink</item>
+    </style>
+
+    <style name="DarkTheme.Cyan" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_cyan</item>
+        <item name="colorPrimaryDark">@color/material_cyan</item>
+    </style>
+
+    <style name="DarkTheme.DarkGreen" parent="DarkTheme">
+        <item name="colorPrimary">@color/material_dark_green</item>
+        <item name="colorPrimaryDark">@color/material_dark_green</item>
+    </style>
+</resources>

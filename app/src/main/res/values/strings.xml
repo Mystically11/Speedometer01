@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name" translatable="false">Speedometer01</string>
+    <string name="trip_text">Trip</string>
+
+    <string name="sd_start_text">Start</string>
+    <string name="sd_end_text">Stop</string>
+    <string name="sd_trip_text">Distance Travelled</string>
+    <string name="sd_max_speed_text">Max Speed</string>
+    <string name="sd_avg_speed_text">Avg Speed</string>
+    <string name="sd_total_time_text">Total Time</string>
+
+    <string name="max_speed" translatable="false">40.0</string>
+</resources>

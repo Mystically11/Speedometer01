@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="material_red">#FFEF5350</color>
+    <color name="material_blue">#FF64B5F6</color>
+    <color name="material_yellow">#FFFDD835</color>
+    <color name="material_orange">#FFFB8C00</color>
+    <color name="material_purple">#FFBA68C8</color>
+    <color name="material_green">#FF9CCC65</color>
+    <color name="material_pink">#FFEC407A</color>
+    <color name="material_cyan">#FF26C6DA</color>
+    <color name="material_dark_green">#FF4CAF50</color>
+</resources>
