@@ -1,4 +1,6 @@
-**what a speedometer**
+# what a speedometer
+
+** THIS PROJECT IS STILL IN HEAVY DEVELOPMENT... MIGHT BE LIKE THAT FOR A WHILE TOO **
 
 Ok so basically i got tired of apps that had too many ads and microtransactions while they werre just a speedometer so i made my own.
 
