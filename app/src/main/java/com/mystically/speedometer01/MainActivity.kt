@@ -51,8 +51,12 @@ class MainActivity : BaseActivity(), SensorEventListener {
     private var maxSpeed = 0.0f
     private var isRecording = false
 
+    // not included
+    private var lastUpdateTime: Long = System.currentTimeMillis()
+
     // ui items
     private lateinit var speedometer: SpeedometerView
+    private lateinit var durationText: TextView
     private lateinit var tripText: TextView
     private lateinit var maxSpeedText: TextView
     private lateinit var avgSpeedText: TextView
@@ -103,6 +107,7 @@ class MainActivity : BaseActivity(), SensorEventListener {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         speedometer = findViewById(R.id.speedometer)
+        durationText = findViewById(R.id.durationText)
         tripText = findViewById(R.id.tripText)
         maxSpeedText = findViewById(R.id.maxSpeedText)
         avgSpeedText = findViewById(R.id.avgSpeedText)
@@ -164,6 +169,7 @@ class MainActivity : BaseActivity(), SensorEventListener {
 
         isRecording = true
         sessionStartTime = System.currentTimeMillis()
+        updateTime()
 
         totalDistance = 0.0
         maxSpeed = 0.0f
@@ -175,13 +181,14 @@ class MainActivity : BaseActivity(), SensorEventListener {
 
         isRecording = false
         sessionStopTime = System.currentTimeMillis()
+        handler.removeCallbacksAndMessages(null)
 
         val durationMillis = sessionStopTime - sessionStartTime
         val durationString = formatDuration(durationMillis)
         val startTimeFormatted = formatTime(sessionStartTime)
         val stopTimeFormatted = formatTime(sessionStopTime)
 
-        val avgSpeed = if (totalTime > 0) totalDistance / totalTime else 0.0
+        val avgSpeed = totalDistance / (totalTime / 3600.0)
 
         val sessionData = SessionData(
             startTime = startTimeFormatted,
@@ -215,7 +222,7 @@ class MainActivity : BaseActivity(), SensorEventListener {
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)
                     val location = locationResult.lastLocation
-                    if (location != null) {
+                    if (location != null && isRecording) {
                         updateSpeedAndTrip(location)
                     }
                 }
@@ -239,30 +246,35 @@ class MainActivity : BaseActivity(), SensorEventListener {
     }
 
     private fun updateSpeedAndTrip(location: Location) {
-        val speedInMetersPerSecond = location.speed
-        val speedInKmH = speedInMetersPerSecond * 3.6f
+        val currentTime = System.currentTimeMillis()
+        val speedms = location.speed
+        val speedkmh = speedms * 3.6f
 
-        speedometer.currentSpeed = speedInKmH
+        speedometer.currentSpeed = speedkmh
 
-        if (speedInKmH > maxSpeed) {
-            maxSpeed = speedInKmH
+        if (speedkmh > maxSpeed) {
+            maxSpeed = speedkmh
         }
 
         if (previousLocation != null) {
-            val distanceTraveled = previousLocation!!.distanceTo(location) / 1000 // Convert meters to km
+
+            val distanceTraveled = previousLocation!!.distanceTo(location) / 1000
             totalDistance += distanceTraveled
         }
 
-        totalTime += 2.0 / 3600.0
+        val timeDifference = (currentTime - lastUpdateTime) / 1000.0
+        totalTime += timeDifference
+
+        lastUpdateTime = currentTime
 
         maxSpeedText.text = String.format(Locale.getDefault(), "Max: %.0f km/h", maxSpeed)
 
-        val avgSpeed = if (totalTime > 0) totalDistance / totalTime else 0
+        val avgSpeed = totalDistance / (totalTime / 3600.0)
         avgSpeedText.text = String.format(Locale.getDefault(), "Avg: %.0f km/h", avgSpeed)
 
         previousLocation = location
 
-        tripText.text = String.format(Locale.getDefault(), getString(R.string.trip_text) + ": %.2f km", totalDistance)
+        tripText.text = String.format(Locale.getDefault(),"%.2f km", totalDistance)
     }
 
 
@@ -350,11 +362,19 @@ class MainActivity : BaseActivity(), SensorEventListener {
     }
 
 
-    private fun formatDuration(durationMillis: Long): String {
-        val seconds = durationMillis / 1000 % 60
-        val minutes = durationMillis / (1000 * 60) % 60
-        val hours = durationMillis / (1000 * 60 * 60)
-        return String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds)
+    private fun updateTime() {
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                val elapsed = System.currentTimeMillis() - sessionStartTime
+                durationText.text = formatDuration(elapsed)
+
+                handler.postDelayed(this, 1000)
+            }
+        }, 1000)
+    }
+
+    private fun formatDuration(dur: Long): String {
+        return String.format(Locale.getDefault(), "%02d:%02d:%02d", dur / (1000 * 60 * 60), dur / (1000 * 60) % 60, dur / 1000 % 60)
     }
 
     private fun loadFromSharedPreferences() {

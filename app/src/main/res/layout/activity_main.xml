@@ -22,7 +22,7 @@
             android:id="@+id/gpsSignalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GPS: ?"
+            android:text="GPS: ---"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:layout_marginStart="5dp"
@@ -32,27 +32,59 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="12dp">
+        android:layout_marginBottom="12dp">
 
-        <ImageView
-            android:id="@+id/tripIcon"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_conversion_path"
-            app:tint="?attr/colorPrimary" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp">
 
-        <TextView
-            android:id="@+id/tripText"
+            <ImageView
+                android:id="@+id/durationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_clock_outline"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/durationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--:--:--"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:text="Trip: ?"
-            android:textSize="16sp"
-            android:layout_marginStart="5dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp">
+
+            <ImageView
+                android:id="@+id/tripIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_conversion_path"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tripText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:text="-.-- km"
+                android:textSize="16sp"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +103,7 @@
             android:layout_marginStart="12dp">
 
             <ImageView
-                android:id="@+id/stopIcon"
+                android:id="@+id/maxSpeedIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_speed"
@@ -81,7 +113,7 @@
                 android:id="@+id/maxSpeedText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Max: ?"
+                android:text="Max: - km/h"
                 android:textColor="@android:color/white"
                 android:layout_marginStart="5dp"
                 android:textSize="16sp" />
@@ -95,7 +127,7 @@
             android:layout_marginStart="12dp">
 
             <ImageView
-                android:id="@+id/stopIcon"
+                android:id="@+id/avgSpeedIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_average_pace"
@@ -105,7 +137,7 @@
                 android:id="@+id/avgSpeedText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Avg: ?"
+                android:text="Avg: - km/h"
                 android:textColor="@android:color/white"
                 android:layout_marginStart="5dp"
                 android:textSize="16sp" />

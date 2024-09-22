@@ -49,11 +49,11 @@ class SettingsActivity : BaseActivity() {
         speedDropdown.adapter = speedAdapter
 
         val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        val currentTheme = sharedPreferences.getString("selectedTheme", "Default")
+        val currentTheme = sharedPreferences.getString("selectedTheme", "Blue")
         val currentMaxSpeed = sharedPreferences.getFloat("maxSpeed", 40f)
 
         colorDropdown.setSelection(colorOptions.indexOf(currentTheme))
-        speedDropdown.setSelection(speedOptions.indexOf(currentMaxSpeed.toString()))
+        speedDropdown.setSelection(speedOptions.indexOf(currentMaxSpeed.toInt().toString()))
 
         saveButton.setOnClickListener {
             val builder = AlertDialog.Builder(this)
@@ -63,8 +63,7 @@ class SettingsActivity : BaseActivity() {
             builder.setPositiveButton("Yes") { _: DialogInterface, _: Int ->
 
                 val maxSpeedString = speedDropdown.selectedItem.toString()
-                val maxSpeed =
-                    if (maxSpeedString.isNotEmpty()) maxSpeedString.toFloat() else currentMaxSpeed
+                val maxSpeed = if (maxSpeedString.isNotEmpty()) maxSpeedString.toFloat() else currentMaxSpeed
                 val selectedTheme = colorDropdown.selectedItem.toString()
 
                 val editor = sharedPreferences.edit()

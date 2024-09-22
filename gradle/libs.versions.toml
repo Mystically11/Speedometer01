@@ -1,6 +1,5 @@
 [versions]
-agp = "8.5.2"
-androidMaterialColorPickerDialog = "v1.2.3"
+agp = "8.6.0"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -12,11 +11,8 @@ activity = "1.9.2"
 constraintlayout = "2.1.4"
 playServicesLocation = "21.3.0"
 roomVersion = "2.6.1"
-fontawesome = "5.9.0.0-kotlin"
-iconics = "5.4.0"
 
 [libraries]
-android-material-color-picker-dialog = { module = "com.github.Pes8:android-material-color-picker-dialog", version.ref = "androidMaterialColorPickerDialog" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
@@ -29,9 +25,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
-iconics-core = { group = "com.mikepenz", name = "iconics-core", version.ref = "iconics" }
-iconics-views = { group = "com.mikepenz", name = "iconics-views", version.ref = "iconics" }
-fontawesome = { group = "com.mikepenz", name = "fontawesome-typeface", version.ref = "fontawesome" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

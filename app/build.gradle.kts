@@ -49,11 +49,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
 
-    implementation(libs.iconics.core)
-    implementation(libs.iconics.views)
-    implementation(libs.fontawesome)
-
-
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)
